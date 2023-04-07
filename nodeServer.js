@@ -1,5 +1,7 @@
 const http = require('http');
 const fs = require('fs');
+const express = require('express')
+const app = express()
 
 const server = http.createServer(
     (Req, Res) => {
@@ -12,7 +14,9 @@ const server = http.createServer(
             fichier = './HTML/profil.html';
         } else if (Req.url === '/contact' && Req.method === 'GET') {
             fichier = './HTML/contact.html';
-        } else {
+        } else if (Req.url === '/product' && Req.method === 'GET') {
+            fichier = './HTML/product.html';
+        }    else{
             fichier = './HTML/404.html';
         }
         fs.readFile(fichier,
